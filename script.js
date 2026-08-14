@@ -77,6 +77,7 @@ function activateWeddingDayMode() {
     const intro = document.getElementById('intro');
     if (intro) intro.style.display = 'none';
 
+    document.documentElement.style.overflow = 'auto';
     document.body.style.overflow = 'auto';
 
     // Bouton discret pour lancer la musique (obligatoire sur mobile)
@@ -192,16 +193,19 @@ if (envelope) {
 
         envelope.classList.add('open');
 
+        // La page du verset est révélée dès que le rabat est ouvert (1.4s)
         setTimeout(() => {
-            intro.style.transition = 'opacity 1.5s ease';
+            window.scrollTo(0, 0);
+            intro.style.transition = 'opacity 0.9s ease';
             intro.style.opacity = '0';
 
             setTimeout(() => {
                 intro.style.display = 'none';
+                document.documentElement.style.overflow = 'auto';
                 document.body.style.overflow = 'auto';
-            }, 1500);
+            }, 900);
 
-        }, 3000);
+        }, 1500);
     });
 }
 
@@ -331,6 +335,11 @@ function initAccessibility() {
 // ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Bloque le défilement tant que l'enveloppe n'est pas ouverte :
+    // l'invité atterrit toujours sur la page du verset
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
 
     initLanguage();
 
