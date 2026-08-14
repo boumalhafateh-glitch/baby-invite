@@ -113,7 +113,7 @@ function activateWeddingDayMode() {
 
 const audio = new Audio('audio/music.mp3');
 audio.loop = true;
-audio.volume = 0.6;
+audio.volume = 0.8;
 
 function playMusic() {
     audio.play().catch(err => console.log('Audio error:', err));
