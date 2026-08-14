@@ -34,11 +34,6 @@ const I18N = {
   cdHours:         { fr: 'Heures',            en: 'Hours',           ar: 'ساعات' },
   cdMinutes:       { fr: 'Minutes',           en: 'Minutes',         ar: 'دقائق' },
   cdSeconds:       { fr: 'Secondes',          en: 'Seconds',         ar: 'ثوانٍ' },
-  rsvpTitle:       { fr: 'Confirmez Votre Présence', en: 'Confirm Your Presence', ar: 'أكدوا حضوركم' },
-  rsvpText:        { fr: 'Votre présence est le plus beau des cadeaux pour accueillir [Prénom]. Merci de confirmer votre venue avant le [DATE] afin que nous puissions organiser cette belle journée.', en: 'Your presence is the most beautiful gift to welcome [Prénom]. Please confirm your attendance before [DATE] so we can organize this wonderful day.', ar: 'حضوركم أجمل هدية للترحيب بـ [Prénom]. نرجو تأكيد حضوركم قبل [DATE] حتى نتمكن من تنظيم هذا اليوم الجميل.' },
-  rsvpBtn:         { fr: 'Confirmer via WhatsApp', en: 'Confirm via WhatsApp', ar: 'التأكيد عبر واتساب' },
-  rsvpInfo:        { fr: 'Pour toute question, n\'hésitez pas à nous contacter', en: 'For any questions, feel free to contact us', ar: 'لأي استفسار، لا تترددوا في الاتصال بنا' },
-  rsvpSig:         { fr: 'Au plaisir de vous voir', en: 'We look forward to seeing you', ar: 'في انتظار رؤيتكم' },
   title:           { fr: 'Invitation de Naissance', en: 'Birth Invitation', ar: 'دعوة ميلاد' }
 };
 
@@ -275,16 +270,6 @@ function fixMobileViewport() {
 
 
 // ========================================
-// RSVP TRACKING
-// ========================================
-
-function initRSVPTracking() {
-    const btn = document.querySelector('.rsvp-button');
-    if (btn) btn.addEventListener('click', () => console.log('RSVP clicked'));
-}
-
-
-// ========================================
 // ACCESSIBILITY
 // ========================================
 
@@ -316,7 +301,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollIndicator();
     initCardEffects();
-    initRSVPTracking();
     fixMobileViewport();
 
     console.log('💐 Invitation de naissance prête !');
