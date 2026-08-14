@@ -140,7 +140,7 @@ if (audioBtn) {
     audio.addEventListener('pause', updateAudioIcon);
 }
 
-// Démarrage automatique du son dès que l'invité fait défiler la page
+// Démarrage automatique du son UNIQUEMENT quand l'invité atteint le prénom du bébé
 let musicStarted = false;
 
 function startMusic() {
@@ -155,13 +155,18 @@ function startMusic() {
     });
 }
 
-function startMusicOnScroll() {
-    if (window.scrollY > 80) {
-        window.removeEventListener('scroll', startMusicOnScroll);
-        startMusic();
-    }
+const babyName = document.querySelector('#announce .hero-names');
+if (babyName && 'IntersectionObserver' in window) {
+    const nameObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                nameObserver.disconnect();
+                startMusic();
+            }
+        });
+    }, { threshold: 0.4 });
+    nameObserver.observe(babyName);
 }
-window.addEventListener('scroll', startMusicOnScroll, { passive: true });
 
 window.addEventListener('beforeunload', stopMusic);
 
