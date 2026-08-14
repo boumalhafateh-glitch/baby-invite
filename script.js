@@ -25,7 +25,7 @@ const I18N = {
   evLabelCelebration: { fr: 'CÉLÉBRATION',    en: 'CELEBRATION',     ar: 'الاحتفال' },
   evValueCelebration: { fr: 'Notre joie pour notre nouveau-né, lors de son sbu\' et de sa circoncision', en: 'Our joy for our newborn, at his sbu\' and his circumcision', ar: 'فرحتنا بمولودنا، في سبوعه وختانه' },
   evLabelPlace:    { fr: 'LIEU',              en: 'LOCATION',        ar: 'المكان' },
-  evValuePlace:    { fr: 'Joinville',         en: 'Joinville',       ar: 'جوينفيل' },
+  evValuePlace:    { fr: 'Joinville',         en: 'Joinville',       ar: 'جوانفيل' },
   audioLabel:      { fr: 'Écouter',           en: 'Play',            ar: 'استمع' },
   title:           { fr: 'Invitation de Naissance', en: 'Birth Invitation', ar: 'دعوة ميلاد' }
 };
