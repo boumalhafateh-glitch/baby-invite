@@ -34,6 +34,7 @@ const I18N = {
   cdHours:         { fr: 'Heures',            en: 'Hours',           ar: 'ساعات' },
   cdMinutes:       { fr: 'Minutes',           en: 'Minutes',         ar: 'دقائق' },
   cdSeconds:       { fr: 'Secondes',          en: 'Seconds',         ar: 'ثوانٍ' },
+  audioLabel:      { fr: 'Écouter',           en: 'Play',            ar: 'استمع' },
   title:           { fr: 'Invitation de Naissance', en: 'Birth Invitation', ar: 'دعوة ميلاد' }
 };
 
