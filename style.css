@@ -405,11 +405,11 @@ body.wedding-day .scroll-indicator {
     max-width: 48rem;
     margin: 0 auto;
     text-align: center;
-    font-family: var(--font-sans);
-    font-size: clamp(1rem, 2.5vw, 1.125rem);
-    line-height: 1.8;
+    font-family: 'Amiri', var(--font-sans), serif;
+    font-size: clamp(1.05rem, 2.8vw, 1.3rem);
+    line-height: 2;
     color: var(--wedding-text-light);
-    font-weight: 300;
+    font-weight: 400;
 }
  
 .story-content p {
