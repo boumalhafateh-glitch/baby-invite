@@ -140,6 +140,15 @@ if (audioBtn) {
     audio.addEventListener('pause', updateAudioIcon);
 }
 
+// Démarrage automatique du son dès que l'invité fait défiler la page
+function startMusicOnScroll() {
+    if (window.scrollY > 80) {
+        window.removeEventListener('scroll', startMusicOnScroll);
+        if (audio.paused) playMusic();
+    }
+}
+window.addEventListener('scroll', startMusicOnScroll, { passive: true });
+
 window.addEventListener('beforeunload', stopMusic);
 
 window.addEventListener('visibilitychange', () => {
@@ -162,7 +171,6 @@ if (envelope) {
     envelope.addEventListener('click', () => {
         envelope.style.pointerEvents = 'none';
 
-        playMusic();
         envelope.classList.add('open');
 
         setTimeout(() => {
