@@ -320,6 +320,32 @@ body.wedding-day .scroll-indicator {
     color: var(--wedding-text);
     margin-bottom: 2rem;
 }
+
+.name-frame {
+    position: relative;
+    display: inline-block;
+}
+
+.footprint-ring {
+    position: absolute;
+    inset: -70px -150px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.footprint-ring .fp {
+    position: absolute;
+}
+
+.fp--1 { left: 5%;   top: 6%;   width: 15px; height: 20px; color: var(--baby-blush);      opacity: 0.50; transform: rotate(-32deg); }
+.fp--2 { right: 4%;  top: 8%;   width: 19px; height: 25px; color: var(--baby-mint);       opacity: 0.40; transform: rotate(28deg); }
+.fp--3 { left: 1%;   top: 38%;  width: 23px; height: 31px; color: var(--baby-blue);       opacity: 0.45; transform: rotate(-72deg); }
+.fp--4 { right: 1%;  top: 44%;  width: 16px; height: 21px; color: var(--wedding-beige);   opacity: 0.60; transform: rotate(70deg); }
+.fp--5 { left: 7%;   bottom: 4%; width: 20px; height: 27px; color: var(--baby-mint);      opacity: 0.35; transform: rotate(-22deg); }
+.fp--6 { right: 5%;  bottom: 6%; width: 13px; height: 17px; color: var(--baby-blush);     opacity: 0.60; transform: rotate(42deg); }
+.fp--7 { left: 46%;  top: -4%;  width: 12px; height: 16px; color: var(--wedding-beige);   opacity: 0.50; transform: rotate(-10deg); }
+.fp--8 { left: 44%;  bottom: -2%; width: 17px; height: 23px; color: var(--baby-blue);     opacity: 0.35; transform: rotate(12deg); }
+.fp--9 { left: -6%;  top: 62%;  width: 11px; height: 15px; color: var(--baby-blush);      opacity: 0.30; transform: rotate(-15deg); }
  
 .date-main {
     font-family: var(--font-serif);
