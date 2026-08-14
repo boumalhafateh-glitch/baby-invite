@@ -11,6 +11,60 @@ const CELEBRATION_DAY   = '2026-08-22T00:00:00'; // minuit du jour J — mode "j
 const CELEBRATION_START = '2026-08-22T18:00:00'; // heure de la fête — compte à rebours
 
 // ========================================
+// LANGUES — FR / EN / AR
+// ========================================
+
+const I18N = {
+  seal:            { fr: 'Ouvrir',            en: 'Open',            ar: 'افتح' },
+  heroIntro:       { fr: 'Nous avons la joie de vous annoncer', en: 'We are delighted to announce', ar: 'يسعدنا أن نعلن لكم' },
+  storyTitle:      { fr: 'Notre Bonheur',     en: 'Our Joy',         ar: 'فرحتنا' },
+  storyP1:         { fr: 'Le [DATE] à [HEURE], notre famille s\'est agrandie. Un petit trésor est venu illuminer nos vies, et nos cœurs battent désormais à l\'unisson au rythme de ses premiers sourires.', en: 'On [DATE] at [HEURE], our family grew by one. A little treasure came to brighten our lives, and our hearts now beat as one to the rhythm of their first smiles.', ar: 'في [DATE] على الساعة [HEURE]، كبرت عائلتنا. جاء كنز صغير ينير حياتنا، وأصبحت قلوبنا تنبض بإيقاع ابتساماته الأولى.' },
+  storyP2:         { fr: 'Ce bonheur immense, nous souhaitons le partager avec ceux qui comptent pour nous, avec vous qui avez toujours été présents à nos côtés, dans la joie comme dans la vie de tous les jours.', en: 'This immense joy, we want to share it with those who matter to us, with you who have always been by our side, in happiness as in everyday life.', ar: 'هذه الفرحة العظيمة نريد مشاركتها مع من يعنون لنا الكثير، معكم الذين كنتم دائماً بجانبنا في الفرح وفي الحياة اليومية.' },
+  storyP3:         { fr: 'Aujourd\'hui, nous vous invitons à célébrer la naissance de [Prénom] et à venir partager avec nous ce moment inoubliable. Nous serions honorés de votre présence pour accueillir notre petit miracle.', en: 'Today, we invite you to celebrate the birth of [Prénom] and to share this unforgettable moment with us. We would be honored by your presence to welcome our little miracle.', ar: 'اليوم، ندعوكم للاحتفال بميلاد [Prénom] ومشاركتنا هذه اللحظة التي لا تُنسى. سيشرفنا حضوركم للترحيب بمعجزتنا الصغيرة.' },
+  eventTitle:      { fr: 'Détails de l\'Événement', en: 'Event Details', ar: 'تفاصيل المناسبة' },
+  subtitle:        { fr: 'CÉLÉBRATION',       en: 'CELEBRATION',     ar: 'الاحتفال' },
+  evLabelDate:     { fr: 'DATE',              en: 'DATE',            ar: 'التاريخ' },
+  evDescBirth:     { fr: 'Jour de naissance', en: 'Birth day',       ar: 'يوم الميلاد' },
+  evLabelCelebration: { fr: 'CÉLÉBRATION',    en: 'CELEBRATION',     ar: 'الاحتفال' },
+  evDescCelebration:  { fr: 'L\'accueil de [Prénom]', en: 'Welcoming [Prénom]', ar: 'استقبال [Prénom]' },
+  evLabelPlace:    { fr: 'LIEU',              en: 'LOCATION',        ar: 'المكان' },
+  cdSubtitle:      { fr: 'COMPTE À REBOURS',  en: 'COUNTDOWN',       ar: 'العد التنازلي' },
+  cdTitle:         { fr: 'Le Jour de la Fête Approche', en: 'The Big Day Approaches', ar: 'يقترب يوم الاحتفال' },
+  cdDays:          { fr: 'Jours',             en: 'Days',            ar: 'أيام' },
+  cdHours:         { fr: 'Heures',            en: 'Hours',           ar: 'ساعات' },
+  cdMinutes:       { fr: 'Minutes',           en: 'Minutes',         ar: 'دقائق' },
+  cdSeconds:       { fr: 'Secondes',          en: 'Seconds',         ar: 'ثوانٍ' },
+  rsvpTitle:       { fr: 'Confirmez Votre Présence', en: 'Confirm Your Presence', ar: 'أكدوا حضوركم' },
+  rsvpText:        { fr: 'Votre présence est le plus beau des cadeaux pour accueillir [Prénom]. Merci de confirmer votre venue avant le [DATE] afin que nous puissions organiser cette belle journée.', en: 'Your presence is the most beautiful gift to welcome [Prénom]. Please confirm your attendance before [DATE] so we can organize this wonderful day.', ar: 'حضوركم أجمل هدية للترحيب بـ [Prénom]. نرجو تأكيد حضوركم قبل [DATE] حتى نتمكن من تنظيم هذا اليوم الجميل.' },
+  rsvpBtn:         { fr: 'Confirmer via WhatsApp', en: 'Confirm via WhatsApp', ar: 'التأكيد عبر واتساب' },
+  rsvpInfo:        { fr: 'Pour toute question, n\'hésitez pas à nous contacter', en: 'For any questions, feel free to contact us', ar: 'لأي استفسار، لا تترددوا في الاتصال بنا' },
+  rsvpSig:         { fr: 'Au plaisir de vous voir', en: 'We look forward to seeing you', ar: 'في انتظار رؤيتكم' },
+  title:           { fr: 'Invitation de Naissance', en: 'Birth Invitation', ar: 'دعوة ميلاد' }
+};
+
+function chooseLanguage(code) {
+    document.documentElement.lang = code;
+    document.body.dir = code === 'ar' ? 'rtl' : 'ltr';
+    document.body.classList.toggle('lang-ar', code === 'ar');
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (I18N[key] && I18N[key][code]) el.textContent = I18N[key][code];
+    });
+
+    document.title = I18N.title[code];
+
+    const overlay = document.getElementById('langOverlay');
+    if (overlay) overlay.style.display = 'none';
+}
+
+function initLanguage() {
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => chooseLanguage(btn.dataset.lang));
+    });
+}
+
+// ========================================
 // DÉTECTION DU JOUR J
 // À partir de la date de célébration : seul le hero s'affiche
 // ========================================
@@ -249,6 +303,8 @@ function initAccessibility() {
 // ========================================
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    initLanguage();
 
     if (isWeddingDay()) {
         activateWeddingDayMode();

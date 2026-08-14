@@ -8,14 +8,30 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Allura&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&family=Allura&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+ 
+    <!-- CHOIX DE LANGUE -->
+    <div class="lang-overlay" id="langOverlay">
+        <div class="lang-card">
+            <p class="lang-title">
+                <span class="lt lt-fr">Choisissez votre langue</span>
+                <span class="lt lt-en">Choose your language</span>
+                <span class="lt lt-ar">اختر لغتك</span>
+            </p>
+            <div class="lang-btns">
+                <button class="lang-btn" data-lang="fr">Français</button>
+                <button class="lang-btn" data-lang="en">English</button>
+                <button class="lang-btn lang-btn-ar" data-lang="ar">العربية</button>
+            </div>
+        </div>
+    </div>
  
     <!-- INTRO ENVELOPPE -->
     <div class="intro" id="intro">
         <div class="envelope" id="envelope">
-            <div class="seal">Ouvrir</div>
+            <div class="seal" data-i18n="seal">Ouvrir</div>
         </div>
     </div>
  
@@ -35,7 +51,7 @@
         </div>
  
         <div class="hero-content">
-            <p class="hero-intro animate-fade-in">Nous avons la joie de vous annoncer</p>
+            <p class="hero-intro animate-fade-in" data-i18n="heroIntro">Nous avons la joie de vous annoncer</p>
             <h1 class="hero-names animate-scale-in">[Prénom]</h1>
             <p class="date-main">[DATE]</p>
             <p class="date-location">[VILLE]</p>
@@ -60,19 +76,19 @@
                 <div class="divider-line"></div>
             </div>
  
-            <h2 class="section-title">Notre Bonheur</h2>
+            <h2 class="section-title" data-i18n="storyTitle">Notre Bonheur</h2>
  
             <div class="story-content">
-                <p>
+                <p data-i18n="storyP1">
                     Le [DATE] à [HEURE], notre famille s'est agrandie.
                     Un petit trésor est venu illuminer nos vies, et nos cœurs battent
                     désormais à l'unisson au rythme de ses premiers sourires.
                 </p>
-                <p>
+                <p data-i18n="storyP2">
                     Ce bonheur immense, nous souhaitons le partager avec ceux qui comptent pour nous,
                     avec vous qui avez toujours été présents à nos côtés, dans la joie comme dans la vie de tous les jours.
                 </p>
-                <p class="story-final">
+                <p class="story-final" data-i18n="storyP3">
                     Aujourd'hui, nous vous invitons à célébrer la naissance de [Prénom]
                     et à venir partager avec nous ce moment inoubliable. Nous serions honorés
                     de votre présence pour accueillir notre petit miracle.
@@ -94,8 +110,8 @@
     <section id="event-details" class="event-section fade-on-scroll">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Détails de l'Événement</h2>
-                <p class="section-subtitle">CÉLÉBRATION</p>
+                <h2 class="section-title" data-i18n="eventTitle">Détails de l'Événement</h2>
+                <p class="section-subtitle" data-i18n="subtitle">CÉLÉBRATION</p>
             </div>
  
             <div class="event-grid">
@@ -108,9 +124,9 @@
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
                     </div>
-                    <h3 class="event-label">DATE</h3>
+                    <h3 class="event-label" data-i18n="evLabelDate">DATE</h3>
                     <p class="event-value">[DATE]</p>
-                    <p class="event-description">Jour de naissance</p>
+                    <p class="event-description" data-i18n="evDescBirth">Jour de naissance</p>
                 </div>
  
                 <div class="event-card">
@@ -122,9 +138,9 @@
                             <line x1="3" y1="10" x2="21" y2="10"></line>
                         </svg>
                     </div>
-                    <h3 class="event-label">CÉLÉBRATION</h3>
+                    <h3 class="event-label" data-i18n="evLabelCelebration">CÉLÉBRATION</h3>
                     <p class="event-value">[DATE DE LA FÊTE]</p>
-                    <p class="event-description">L'accueil de [Prénom]</p>
+                    <p class="event-description" data-i18n="evDescCelebration">L'accueil de [Prénom]</p>
                 </div>
  
                 <div class="event-card">
@@ -134,7 +150,7 @@
                             <circle cx="12" cy="10" r="3"></circle>
                         </svg>
                     </div>
-                    <h3 class="event-label">LIEU</h3>
+                    <h3 class="event-label" data-i18n="evLabelPlace">LIEU</h3>
                     <p class="event-value">[VILLE]</p>
                     <p class="event-description">[Adresse]</p>
                 </div>
@@ -156,8 +172,8 @@
     <section id="countdown" class="countdown-section fade-on-scroll">
         <div class="container">
             <div class="section-header">
-                <p class="section-subtitle">COMPTE À REBOURS</p>
-                <h2 class="section-title">Le Jour de la Fête Approche</h2>
+                <p class="section-subtitle" data-i18n="cdSubtitle">COMPTE À REBOURS</p>
+                <h2 class="section-title" data-i18n="cdTitle">Le Jour de la Fête Approche</h2>
             </div>
  
             <div class="countdown-grid">
@@ -165,28 +181,28 @@
                     <div class="countdown-bg"></div>
                     <div class="countdown-content">
                         <div class="countdown-value" id="days">00</div>
-                        <div class="countdown-label">Jours</div>
+                        <div class="countdown-label" data-i18n="cdDays">Jours</div>
                     </div>
                 </div>
                 <div class="countdown-card">
                     <div class="countdown-bg"></div>
                     <div class="countdown-content">
                         <div class="countdown-value" id="hours">00</div>
-                        <div class="countdown-label">Heures</div>
+                        <div class="countdown-label" data-i18n="cdHours">Heures</div>
                     </div>
                 </div>
                 <div class="countdown-card">
                     <div class="countdown-bg"></div>
                     <div class="countdown-content">
                         <div class="countdown-value" id="minutes">00</div>
-                        <div class="countdown-label">Minutes</div>
+                        <div class="countdown-label" data-i18n="cdMinutes">Minutes</div>
                     </div>
                 </div>
                 <div class="countdown-card">
                     <div class="countdown-bg"></div>
                     <div class="countdown-content">
                         <div class="countdown-value" id="seconds">00</div>
-                        <div class="countdown-label">Secondes</div>
+                        <div class="countdown-label" data-i18n="cdSeconds">Secondes</div>
                     </div>
                 </div>
             </div>
@@ -212,9 +228,9 @@
                 </svg>
             </div>
  
-            <h2 class="section-title">Confirmez Votre Présence</h2>
+            <h2 class="section-title" data-i18n="rsvpTitle">Confirmez Votre Présence</h2>
  
-            <p class="rsvp-text">
+            <p class="rsvp-text" data-i18n="rsvpText">
                 Votre présence est le plus beau des cadeaux pour accueillir [Prénom].
                 Merci de confirmer votre venue avant le [DATE] afin que nous puissions
                 organiser cette belle journée.
@@ -225,13 +241,13 @@
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
                 </svg>
-                <span>Confirmer via WhatsApp</span>
+                <span data-i18n="rsvpBtn">Confirmer via WhatsApp</span>
             </a>
  
-            <p class="rsvp-info">Pour toute question, n'hésitez pas à nous contacter</p>
+            <p class="rsvp-info" data-i18n="rsvpInfo">Pour toute question, n'hésitez pas à nous contacter</p>
  
             <div class="rsvp-footer">
-                <p class="rsvp-signature">Au plaisir de vous voir</p>
+                <p class="rsvp-signature" data-i18n="rsvpSig">Au plaisir de vous voir</p>
             </div>
         </div>
     </section>
