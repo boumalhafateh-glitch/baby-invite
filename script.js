@@ -1,7 +1,7 @@
 /* ============================================================
-   INVITATION ROYALE — script.js
+   INVITATION DE NAISSANCE — script.js
    Animations : Anime.js v4 (local) | 3 langues FR / EN / AR
-   Règle n°1 : aucune emoji
+   Règle n°1 : aucune emoji — animations discrètes
    ============================================================ */
 
 import {
@@ -24,91 +24,73 @@ const CONFIG = {
 const I18N = {
   fr: {
     docTitle: 'Invitation de naissance',
-    miracle: 'Une petite merveille est arrivée…',
+    miracle: 'Une petite merveille est arrivée',
     chooseLang: 'Choisissez votre langue',
-    cardTeaser: 'Une surprise vous attend…',
-    welcomeKicker: 'Bienvenue au monde',
+    cardTeaser: 'Une surprise vous attend',
     name: '[PRÉNOM]',
-    welcome: 'Nous avons le bonheur de vous annoncer la naissance de notre enfant',
-    bornLabel: 'Né(e) le',
-    timeLabel: 'Heure',
-    weightLabel: 'Poids',
-    heightLabel: 'Taille',
-    birthDate: '[DATE]',
-    birthTime: '[HEURE]',
-    birthWeight: '[POIDS]',
-    birthHeight: '[TAILLE]',
-    parentsMsg: '« Depuis que tu es arrivé(e), notre monde est devenu encore plus beau. Tu es notre plus belle histoire. »',
+    inviteLine: 'Nous avons le plaisir de vous inviter à célébrer la naissance de',
+    bornInfo: 'Né(e) le [DATE] à [HEURE]',
+    statsInfo: 'Poids [POIDS] · Taille [TAILLE]',
+    parentsMsg: '« Depuis que tu es arrivé(e), notre monde est devenu encore plus beau. »',
     parentsNames: '[Prénoms des parents]',
     partyTitle: 'Nous aimerions partager ce merveilleux moment avec vous',
-    partyDate: '[DATE DE LA FÊTE]',
-    partyTime: '[HEURE]',
+    partyDate: '[22 AOÛT 2026]',
+    partyTime: '[18:00]',
     partyPlace: '[LIEU]',
     mapsBtn: "Voir l'itinéraire",
+    rsvpLead: 'Votre présence nous ferait très plaisir.',
     rsvpTitle: 'Serez-vous des nôtres ?',
-    rsvpYes: 'Oui, avec plaisir',
+    rsvpYes: 'Je serai présent(e)',
     rsvpNo: 'Je ne pourrai pas venir',
-    foot: 'Fait avec amour',
+    foot: 'Avec amour',
     rsvpMsgYes: 'Je serai présent(e) à la célébration.',
     rsvpMsgNo: 'Je ne pourrai pas être présent(e), mais je vous souhaite tout le bonheur.',
   },
   en: {
     docTitle: 'Birth Invitation',
-    miracle: 'A little miracle has arrived…',
+    miracle: 'A little miracle has arrived',
     chooseLang: 'Choose your language',
-    cardTeaser: 'A surprise awaits you…',
-    welcomeKicker: 'Welcome to the world',
+    cardTeaser: 'A surprise awaits you',
     name: '[NAME]',
-    welcome: 'It is with great joy that we announce the birth of our child',
-    bornLabel: 'Born',
-    timeLabel: 'Time',
-    weightLabel: 'Weight',
-    heightLabel: 'Height',
-    birthDate: '[DATE]',
-    birthTime: '[TIME]',
-    birthWeight: '[WEIGHT]',
-    birthHeight: '[HEIGHT]',
-    parentsMsg: '“Ever since you arrived, our world has become more beautiful. You are our most beautiful story.”',
+    inviteLine: 'We would be delighted to invite you to celebrate the birth of',
+    bornInfo: 'Born on [DATE] at [TIME]',
+    statsInfo: 'Weight [WEIGHT] · Height [HEIGHT]',
+    parentsMsg: '“Ever since you arrived, our world has become more beautiful.”',
     parentsNames: "[Parents' names]",
     partyTitle: 'We would love to share this wonderful moment with you',
-    partyDate: '[PARTY DATE]',
-    partyTime: '[TIME]',
+    partyDate: '[AUGUST 22, 2026]',
+    partyTime: '[6:00 PM]',
     partyPlace: '[VENUE]',
     mapsBtn: 'View directions',
+    rsvpLead: 'Your presence would mean the world to us.',
     rsvpTitle: 'Will you join us?',
-    rsvpYes: 'Yes, with pleasure',
+    rsvpYes: "I'll be there",
     rsvpNo: "I won't be able to attend",
-    foot: 'Made with love',
+    foot: 'With love',
     rsvpMsgYes: "I'll be there for the celebration.",
     rsvpMsgNo: "I won't be able to attend, but I wish you all the happiness.",
   },
   ar: {
     docTitle: 'دعوة ميلاد',
-    miracle: 'وصلت معجزة صغيرة…',
+    miracle: 'وصلت معجزة صغيرة',
     chooseLang: 'اختر لغتك',
-    cardTeaser: 'مفاجأة بانتظاركم…',
-    welcomeKicker: 'أهلاً بك في العالم',
+    cardTeaser: 'مفاجأة بانتظاركم',
     name: '[الاسم]',
-    welcome: 'يسعدنا أن نعلن لكم عن ولادة طفلنا',
-    bornLabel: 'وُلِد',
-    timeLabel: 'الساعة',
-    weightLabel: 'الوزن',
-    heightLabel: 'الطول',
-    birthDate: '[التاريخ]',
-    birthTime: '[الوقت]',
-    birthWeight: '[الوزن]',
-    birthHeight: '[الطول]',
-    parentsMsg: '« منذ وصولك، صار عالمنا أجمل. أنت أجمل قصصنا. »',
+    inviteLine: 'يسعدنا أن ندعوكم للاحتفال بولادة',
+    bornInfo: 'وُلِد في [التاريخ] على الساعة [الوقت]',
+    statsInfo: 'الوزن [الوزن] · الطول [الطول]',
+    parentsMsg: '« منذ وصولك، صار عالمنا أجمل. »',
     parentsNames: '[أسماء الوالدين]',
     partyTitle: 'نسعد بمشاركتكم هذه اللحظة الجميلة',
-    partyDate: '[موعد الاحتفال]',
-    partyTime: '[الساعة]',
+    partyDate: '[22 أغسطس 2026]',
+    partyTime: '[السادسة مساءً]',
     partyPlace: '[المكان]',
     mapsBtn: 'عرض الاتجاهات',
+    rsvpLead: 'يسعدنا حضوركم.',
     rsvpTitle: 'هل ستكونون معنا؟',
-    rsvpYes: 'نعم، بكل سرور',
+    rsvpYes: 'سأكون حاضراً',
     rsvpNo: 'لن أستطيع الحضور',
-    foot: 'صُنع بحب',
+    foot: 'مع الحب',
     rsvpMsgYes: 'سأحضر الاحتفال.',
     rsvpMsgNo: 'لن أستطيع الحضور، لكن أتمنى لكم كل السعادة.',
   },
@@ -122,7 +104,6 @@ const state = { lang: 'fr', opened: false };
 document.documentElement.classList.add('js');
 injectCrowns();
 spawnDust();
-spawnPetals();
 applyLanguage('fr');
 initPhoto();
 introIn();
@@ -132,18 +113,18 @@ observeReveals();
 /* ---------- Couronne : injection du modèle SVG ---------- */
 function injectCrowns() {
   const tpl = document.getElementById('crownTpl').innerHTML;
-  document.querySelectorAll('.open-crown, .envelope__emblem, .invite__crown').forEach((el) => {
+  document.querySelectorAll('.open-crown, .envelope__emblem, .head-crown').forEach((el) => {
     el.insertAdjacentHTML('beforeend', tpl);
   });
 }
 
-/* ---------- Poussière dorée scintillante ---------- */
+/* ---------- Poussière dorée très discrète ---------- */
 function spawnDust() {
   const box = document.getElementById('dust');
-  for (let i = 0; i < 36; i++) {
+  for (let i = 0; i < 26; i++) {
     const s = document.createElement('span');
     s.className = 'dust';
-    const size = utils.random(2, 4);
+    const size = utils.random(2, 3.5);
     s.style.left = utils.random(0, 100) + '%';
     s.style.top = utils.random(0, 100) + '%';
     s.style.width = size + 'px';
@@ -151,34 +132,12 @@ function spawnDust() {
     box.appendChild(s);
   }
   animate('.dust', {
-    opacity: [0.08, 0.7],
-    scale: [0.6, 1.25],
-    duration: () => utils.random(1800, 4200),
-    delay: () => utils.random(0, 3500),
+    opacity: [0.05, 0.45],
+    scale: [0.7, 1.2],
+    duration: () => utils.random(2600, 6000),
+    delay: () => utils.random(0, 4500),
     loop: true,
     alternate: true,
-    ease: 'inOutSine',
-  });
-}
-
-/* ---------- Pétales doux qui tombent ---------- */
-function spawnPetals() {
-  const box = document.getElementById('petals');
-  for (let i = 0; i < 10; i++) {
-    const p = document.createElement('span');
-    p.className = 'petal';
-    p.style.left = utils.random(0, 100) + '%';
-    p.style.width = utils.random(10, 15) + 'px';
-    p.style.height = utils.random(14, 20) + 'px';
-    box.appendChild(p);
-  }
-  animate('.petal', {
-    y: [0, window.innerHeight + 160],
-    rotate: [0, () => utils.random(360, 720)],
-    opacity: [0, 0.9, 0],
-    duration: () => utils.random(12000, 22000),
-    delay: () => utils.random(0, 14000),
-    loop: true,
     ease: 'inOutSine',
   });
 }
@@ -196,16 +155,16 @@ function initPhoto() {
   med.insertBefore(img, med.firstChild);
 }
 
-/* ---------- Acte 1 : apparition ---------- */
+/* ---------- Cover : apparition ---------- */
 function introIn() {
   const tl = createTimeline({ defaults: { ease: 'outExpo' } });
-  tl.add('.envelope-wrap', { scale: [0.8, 1], opacity: [0, 1], duration: 1200, ease: createSpring({ stiffness: 120, damping: 16 }) }, 250)
-    .add('.envelope__emblem', { scale: [0.4, 1], rotate: [12, 0], duration: 900, ease: createSpring({ stiffness: 150, damping: 13 }) }, '-=820')
-    .add('.open-crown', { opacity: [0, 1], y: [-14, 0], duration: 900 }, '-=850')
-    .add('.open-miracle', { opacity: [0, 1], y: [16, 0], duration: 1000 }, '-=680')
-    .add('.open-lang', { opacity: [0, 1], y: [12, 0], duration: 750 }, '-=620')
-    .add('.lang-btn', { opacity: [0, 1], y: [16, 0], delay: stagger(120), duration: 750, ease: createSpring({ stiffness: 160, damping: 15 }) }, '-=520')
-    .add('.lang-sep', { opacity: [0, 1], scaleY: [0, 1], duration: 500 }, '-=560');
+  tl.add('.envelope-wrap', { scale: [0.85, 1], opacity: [0, 1], duration: 1300, ease: createSpring({ stiffness: 110, damping: 17 }) }, 250)
+    .add('.envelope__emblem', { scale: [0.5, 1], rotate: [10, 0], duration: 950, ease: createSpring({ stiffness: 140, damping: 14 }) }, '-=900')
+    .add('.open-crown', { opacity: [0, 1], y: [-12, 0], duration: 1000 }, '-=950')
+    .add('.open-miracle', { opacity: [0, 1], y: [14, 0], duration: 1100 }, '-=760')
+    .add('.open-lang', { opacity: [0, 1], y: [10, 0], duration: 800 }, '-=760')
+    .add('.lang-btn', { opacity: [0, 1], y: [12, 0], delay: stagger(130), duration: 800, ease: createSpring({ stiffness: 140, damping: 16 }) }, '-=620')
+    .add('.lang-sep', { opacity: [0, 1], scaleY: [0, 1], duration: 550 }, '-=640');
 }
 
 /* ---------- Choix de langue ---------- */
@@ -238,46 +197,35 @@ function openInvitation() {
   state.opened = true;
 
   const tl = createTimeline({ defaults: { ease: 'inOutExpo' } });
-  tl.add('.envelope__flap', { rotateX: -182, duration: 1000, ease: 'inOutQuart' }, 0)
-    .add('.envelope__seal', { opacity: 0, scale: 0.7, duration: 460 }, 0)
-    .add('.envelope__card', { y: -205, scale: 1.06, duration: 820, ease: 'outCubic' }, 360)
-    .add('.open-stage', { opacity: 0, scale: 0.95, duration: 560 }, 1150)
+  tl.add('.envelope__flap', { rotateX: -182, duration: 1050, ease: 'inOutQuart' }, 0)
+    .add('.envelope__seal', { opacity: 0, scale: 0.7, duration: 480 }, 0)
+    .add('.envelope__card', { y: -200, scale: 1.05, duration: 860, ease: 'outCubic' }, 380)
+    .add('.open-stage', { opacity: 0, scale: 0.96, duration: 600 }, 1200)
     .add(() => {
       document.getElementById('scene-open').classList.add('is-hidden');
       document.getElementById('scene-invite').classList.add('is-active');
       window.scrollTo(0, 0);
       revealInvite();
-    }, 1630);
+    }, 1700);
 }
 
-/* ---------- Acte 2 & 3 : contenu de l'invitation ---------- */
+/* ---------- Carte : en-tête ---------- */
 function revealInvite() {
-  const nameEl = document.querySelector('.invite__name');
+  const nameEl = document.querySelector('.head-name');
   if (state.lang !== 'ar') splitChars(nameEl);
 
-  const tl = createTimeline({ defaults: { ease: 'outExpo', duration: 850 } });
-  tl.add('.invite', { opacity: [0, 1], y: [40, 0], scale: [0.98, 1], duration: 900 })
-    .add('.invite__crown', { scale: [0.5, 1], rotate: [-12, 0], duration: 1100, ease: createSpring({ stiffness: 120, damping: 13 }) }, '-=720')
-    .add('.invite__kicker', { opacity: [0, 1], y: [14, 0] }, '-=920')
-    .add('.invite__name .ch', {
+  const tl = createTimeline({ defaults: { ease: 'outExpo', duration: 900 } });
+  tl.add('.card', { opacity: [0, 1], y: [34, 0], duration: 1000 })
+    .add('.head-crown', { scale: [0.6, 1], rotate: [-8, 0], duration: 1200, ease: createSpring({ stiffness: 120, damping: 14 }) }, '-=760')
+    .add('.head-kicker', { opacity: [0, 1], y: [12, 0] }, '-=950')
+    .add('.head-name .ch', {
       opacity: [0, 1],
-      y: () => utils.random(20, 42),
-      rotate: () => utils.random(-8, 8),
-      filter: ['blur(5px)', 'blur(0px)'],
-      delay: stagger(40),
-      duration: 700,
-    }, '-=680')
-    .add('.medallion', { opacity: [0, 1], scale: [0.82, 1], duration: 1100, ease: createSpring({ stiffness: 150, damping: 15 }) }, '-=700')
-    .add('.invite__welcome', { opacity: [0, 1], y: [16, 0] }, '-=820')
-    .add('.invite__stats .stat', {
-      opacity: [0, 1],
-      y: [26, 0],
-      scale: [0.92, 1],
-      delay: stagger(110),
-      ease: createSpring({ stiffness: 150, damping: 15 }),
-    }, '-=840')
-    .add('.invite__parents', { opacity: [0, 1], y: [24, 0] }, '-=720')
-    .add('.invite__foot', { opacity: [0, 1] }, '-=460');
+      y: () => utils.random(16, 34),
+      rotate: () => utils.random(-6, 6),
+      delay: stagger(45),
+      duration: 750,
+    }, '-=700')
+    .add('.card__head .rule', { opacity: [0, 1], scaleX: [0, 1], duration: 900 }, '-=560');
 }
 
 /* ---------- Lettre par lettre (prénoms non-arabes) ---------- */
@@ -293,7 +241,7 @@ function splitChars(el) {
   }
 }
 
-/* ---------- Révélation au scroll (fête + RSVP) ---------- */
+/* ---------- Révélation douce au scroll ---------- */
 function observeReveals() {
   const io = new IntersectionObserver((entries) => {
     entries.forEach((en) => {
@@ -302,14 +250,14 @@ function observeReveals() {
       const kids = [...el.children];
       animate(kids.length ? kids : el, {
         opacity: [0, 1],
-        y: [36, 0],
-        delay: stagger(140),
-        duration: 1000,
+        y: [26, 0],
+        delay: stagger(150),
+        duration: 1200,
         ease: 'outExpo',
       });
       io.unobserve(el);
     });
-  }, { threshold: 0.18 });
+  }, { threshold: 0.15 });
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 }
 
@@ -376,23 +324,23 @@ function heartBurst(btn) {
   const r = btn.getBoundingClientRect();
   const cx = r.left + r.width / 2;
   const cy = r.top + r.height / 2;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 8; i++) {
     const h = document.createElement('span');
     h.className = 'burst';
-    h.style.color = i % 2 === 0 ? '#c3a05e' : '#e7c8bc';
+    h.style.color = i % 2 === 0 ? '#b08d57' : '#8a8375';
     h.innerHTML = heartSvg();
     h.style.left = cx + 'px';
     h.style.top = cy + 'px';
     document.body.appendChild(h);
     animate(h, {
-      x: utils.random(-120, 120),
-      y: utils.random(-150, 40),
+      x: utils.random(-100, 100),
+      y: utils.random(-130, 30),
       opacity: [1, 0],
-      scale: [0.7, 1.4],
-      rotate: utils.random(-70, 70),
-      duration: 1000,
+      scale: [0.7, 1.3],
+      rotate: utils.random(-60, 60),
+      duration: 1100,
       ease: 'outCubic',
     });
-    setTimeout(() => h.remove(), 1050);
+    setTimeout(() => h.remove(), 1150);
   }
 }
