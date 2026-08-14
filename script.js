@@ -141,10 +141,24 @@ if (audioBtn) {
 }
 
 // Démarrage automatique du son dès que l'invité fait défiler la page
+let musicStarted = false;
+
+function startMusic() {
+    if (musicStarted) return;
+    musicStarted = true;
+    const p = audio.play();
+    if (p && p.catch) p.catch(() => {
+        // Autoplay bloqué (souvent iOS) : on réessaie au prochain contact
+        musicStarted = false;
+        window.addEventListener('touchstart', startMusic, { passive: true, once: true });
+        window.addEventListener('pointerdown', startMusic, { passive: true, once: true });
+    });
+}
+
 function startMusicOnScroll() {
     if (window.scrollY > 80) {
         window.removeEventListener('scroll', startMusicOnScroll);
-        if (audio.paused) playMusic();
+        startMusic();
     }
 }
 window.addEventListener('scroll', startMusicOnScroll, { passive: true });
