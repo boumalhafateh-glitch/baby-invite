@@ -308,9 +308,9 @@ body.wedding-day .scroll-indicator {
  
 .hero-names {
     font-family: var(--font-script), 'Amiri', serif;
-    font-size: clamp(2.8rem, 12vw, 7rem);
+    font-size: clamp(3.4rem, 15vw, 9rem);
     font-weight: 400;
-    line-height: 1.2;
+    line-height: 1.25;
     color: var(--wedding-text);
     margin-bottom: 2rem;
 }
