@@ -7,8 +7,7 @@
 // À MODIFIER : date de la célébration
 // ========================================
 
-const CELEBRATION_DAY   = '2026-08-22T00:00:00'; // minuit du jour J — mode "jour de la fête"
-const CELEBRATION_START = '2026-08-22T18:00:00'; // heure de la fête — compte à rebours
+const CELEBRATION_DAY = '2026-08-22T00:00:00'; // minuit du jour J — mode "jour de la fête"
 
 // ========================================
 // LANGUES — FR / EN / AR
@@ -28,12 +27,6 @@ const I18N = {
   evLabelCelebration: { fr: 'CÉLÉBRATION',    en: 'CELEBRATION',     ar: 'الاحتفال' },
   evDescCelebration:  { fr: 'L\'accueil de ريان يحي', en: 'Welcoming ريان يحي', ar: 'استقبال ريان يحي' },
   evLabelPlace:    { fr: 'LIEU',              en: 'LOCATION',        ar: 'المكان' },
-  cdSubtitle:      { fr: 'COMPTE À REBOURS',  en: 'COUNTDOWN',       ar: 'العد التنازلي' },
-  cdTitle:         { fr: 'Le Jour de la Fête Approche', en: 'The Big Day Approaches', ar: 'يقترب يوم الاحتفال' },
-  cdDays:          { fr: 'Jours',             en: 'Days',            ar: 'أيام' },
-  cdHours:         { fr: 'Heures',            en: 'Hours',           ar: 'ساعات' },
-  cdMinutes:       { fr: 'Minutes',           en: 'Minutes',         ar: 'دقائق' },
-  cdSeconds:       { fr: 'Secondes',          en: 'Seconds',         ar: 'ثوانٍ' },
   audioLabel:      { fr: 'Écouter',           en: 'Play',            ar: 'استمع' },
   title:           { fr: 'Invitation de Naissance', en: 'Birth Invitation', ar: 'دعوة ميلاد' }
 };
@@ -211,38 +204,6 @@ if (envelope) {
 
 
 // ========================================
-// COUNTDOWN TIMER
-// ========================================
-
-function initCountdown() {
-    const celebrationDate = new Date(CELEBRATION_START).getTime();
-
-    function updateCountdown() {
-        const distance = celebrationDate - Date.now();
-
-        if (distance > 0) {
-            const days    = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours   = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('days').textContent    = String(days).padStart(2, '0');
-            document.getElementById('hours').textContent   = String(hours).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
-        } else {
-            ['days', 'hours', 'minutes', 'seconds'].forEach(id => {
-                document.getElementById(id).textContent = '00';
-            });
-        }
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
-}
-
-
-// ========================================
 // SCROLL ANIMATIONS
 // ========================================
 
@@ -348,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    initCountdown();
     initScrollAnimations();
     initSmoothScroll();
     initScrollIndicator();
