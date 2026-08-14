@@ -133,11 +133,22 @@ if (audioBtn) {
     audio.addEventListener('pause', updateAudioIcon);
 }
 
-// Démarrage automatique du son UNIQUEMENT quand l'invité atteint le prénom du bébé
+// Démarrage du son : JAMAIS quand la page du verset est à l'écran.
+// Le son ne peut s'enclencher qu'une fois le verset entièrement quitté,
+// et il est coupé systématiquement si le verset réapparaît à l'écran.
 let musicStarted = false;
+let nameReached = false;
+
+function verseOnScreen() {
+    const heroSection = document.querySelector('#hero');
+    if (!heroSection) return false;
+    const r = heroSection.getBoundingClientRect();
+    return r.bottom > 0 && r.top < window.innerHeight;
+}
 
 function startMusic() {
     if (musicStarted) return;
+    if (verseOnScreen()) return;
     musicStarted = true;
     const p = audio.play();
     if (p && p.catch) p.catch(() => {
@@ -153,12 +164,36 @@ if (babyName && 'IntersectionObserver' in window) {
     const nameObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                nameObserver.disconnect();
+                nameReached = true;
                 startMusic();
             }
         });
     }, { threshold: 0.4 });
     nameObserver.observe(babyName);
+}
+
+const heroSection = document.querySelector('#hero');
+if (heroSection) {
+    let pausedForVerse = false;
+    const handleVerse = () => {
+        if (verseOnScreen()) {
+            // Le verset est à l'écran : son coupé systématiquement
+            if (!audio.paused) {
+                pausedForVerse = true;
+                audio.pause();
+            }
+        } else {
+            // On a quitté la page du verset : on peut entendre le son
+            if (pausedForVerse) {
+                pausedForVerse = false;
+                audio.play().catch(() => {});
+            }
+            if (nameReached) startMusic();
+        }
+    };
+    window.addEventListener('scroll', handleVerse, { passive: true });
+    window.addEventListener('resize', handleVerse, { passive: true });
+    handleVerse();
 }
 
 window.addEventListener('beforeunload', stopMusic);
