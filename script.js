@@ -111,7 +111,7 @@ function activateWeddingDayMode() {
 // AUDIO PLAYER
 // ========================================
 
-const audio = new Audio('music.mp3');
+const audio = new Audio('audio/music.mp3');
 audio.loop = true;
 audio.volume = 0.6;
 
@@ -122,6 +122,21 @@ function playMusic() {
 function stopMusic() {
     audio.pause();
     audio.currentTime = 0;
+}
+
+function updateAudioIcon() {
+    const btn = document.getElementById('audioBtn');
+    if (btn) btn.classList.toggle('playing', !audio.paused);
+}
+
+const audioBtn = document.getElementById('audioBtn');
+if (audioBtn) {
+    audioBtn.addEventListener('click', () => {
+        if (audio.paused) playMusic(); else stopMusic();
+        updateAudioIcon();
+    });
+    audio.addEventListener('play', updateAudioIcon);
+    audio.addEventListener('pause', updateAudioIcon);
 }
 
 window.addEventListener('beforeunload', stopMusic);
