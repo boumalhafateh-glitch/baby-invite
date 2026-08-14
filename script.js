@@ -22,11 +22,10 @@ const I18N = {
   storyP3:         { fr: 'Votre présence parmi nous est le plus beau des cadeaux. Ne vous compliquez pas et ne vous chargez d\'aucun souci ; il nous suffit que vous veniez partager notre joie et vous réjouir avec nous de son arrivée. Nous demandons à Allah qu\'Il réjouisse vos cœurs comme Il a réjoui les nôtres, qu\'Il vous accorde une descendance vertueuse et qu\'Il vous comble de joie avec vos enfants et vos proches, et qu\'Il fasse de tous vos jours des jours de fête et de bonheur.', en: 'Your presence among us is the most beautiful gift. Do not go to any trouble or burden yourself — it is enough that you come, share our joy, and rejoice with us in his arrival. We ask Allah to gladden your hearts as He has gladdened ours, to bless you with righteous children, to fill you with joy in your children and loved ones, and to make all your days full of happiness and celebration.', ar: 'وجودكم بيننا هو أجمل هدية، فلا تتكلّفوا ولا تحملوا همًّا، يكفينا أن تأتوا وتشاركونا فرحتنا وتفرحوا معنا بقدومه. نسأل الله أن يفرح قلوبكم كما أفرح قلوبنا، وأن يرزقكم ذرية صالحة، ويفرحكم بأولادكم وأحبابكم، وأن يجعل أيامكم كلها أفراحًا ومسرّات.' },
   eventTitle:      { fr: 'Détails de l\'Événement', en: 'Event Details', ar: 'تفاصيل المناسبة' },
   subtitle:        { fr: 'CÉLÉBRATION',       en: 'CELEBRATION',     ar: 'الاحتفال' },
-  evLabelDate:     { fr: 'DATE',              en: 'DATE',            ar: 'التاريخ' },
-  evDescBirth:     { fr: 'Jour de naissance', en: 'Birth day',       ar: 'يوم الميلاد' },
   evLabelCelebration: { fr: 'CÉLÉBRATION',    en: 'CELEBRATION',     ar: 'الاحتفال' },
-  evDescCelebration:  { fr: 'L\'accueil de ريان يحي', en: 'Welcoming ريان يحي', ar: 'استقبال ريان يحي' },
+  evValueCelebration: { fr: 'Notre joie pour notre nouveau-né, lors de son sbu\' et de sa circoncision', en: 'Our joy for our newborn, at his sbu\' and his circumcision', ar: 'فرحتنا بمولودنا، في سبوعه وختانه' },
   evLabelPlace:    { fr: 'LIEU',              en: 'LOCATION',        ar: 'المكان' },
+  evValuePlace:    { fr: 'Commune de Joinville', en: 'Commune of Joinville', ar: 'بلدية جوينفيل' },
   audioLabel:      { fr: 'Écouter',           en: 'Play',            ar: 'استمع' },
   title:           { fr: 'Invitation de Naissance', en: 'Birth Invitation', ar: 'دعوة ميلاد' }
 };
