@@ -4,12 +4,6 @@
 // ========================================
 
 // ========================================
-// À MODIFIER : date de la célébration
-// ========================================
-
-const CELEBRATION_DAY = '2026-08-22T00:00:00'; // minuit du jour J — mode "jour de la fête"
-
-// ========================================
 // LANGUES — FR / EN / AR
 // ========================================
 
@@ -51,55 +45,6 @@ function initLanguage() {
         btn.addEventListener('click', () => chooseLanguage(btn.dataset.lang));
     });
 }
-
-// ========================================
-// DÉTECTION DU JOUR J
-// À partir de la date de célébration : seul le hero s'affiche
-// ========================================
-
-function isWeddingDay() {
-    const now = new Date();
-    const weddingDay = new Date(CELEBRATION_DAY);
-    return now >= weddingDay;
-}
-
-function activateWeddingDayMode() {
-    document.body.classList.add('wedding-day');
-
-    const intro = document.getElementById('intro');
-    if (intro) intro.style.display = 'none';
-
-    document.documentElement.style.overflow = 'auto';
-    document.body.style.overflow = 'auto';
-
-    // Bouton discret pour lancer la musique (obligatoire sur mobile)
-    const musicBtn = document.createElement('button');
-    musicBtn.innerHTML = '♪ Musique';
-    musicBtn.style.cssText = `
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 999;
-        background: rgba(212, 165, 116, 0.92);
-        color: white;
-        border: none;
-        border-radius: 9999px;
-        padding: 0.65rem 1.3rem;
-        font-family: 'Inter', sans-serif;
-        font-size: 0.85rem;
-        cursor: pointer;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-        transition: opacity 0.4s ease;
-    `;
-    document.body.appendChild(musicBtn);
-
-    musicBtn.addEventListener('click', () => {
-        playMusic();
-        musicBtn.style.opacity = '0';
-        setTimeout(() => musicBtn.remove(), 400);
-    });
-}
-
 
 // ========================================
 // AUDIO PLAYER
@@ -337,12 +282,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden';
 
     initLanguage();
-
-    if (isWeddingDay()) {
-        activateWeddingDayMode();
-        return;
-    }
-
     initScrollAnimations();
     initSmoothScroll();
     initScrollIndicator();

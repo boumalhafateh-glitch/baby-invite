@@ -44,19 +44,6 @@ body {
 }
  
 /* ========================================
-   MODE JOUR DE LA FÊTE — hero uniquement
-   ======================================== */
- 
-body.wedding-day #story,
-body.wedding-day #event-details {
-    display: none !important;
-}
- 
-body.wedding-day .scroll-indicator {
-    display: none;
-}
- 
-/* ========================================
    ANIMATIONS
    ======================================== */
  
