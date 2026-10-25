@@ -1,0 +1,235 @@
+/* ==========================================================================
+   COUCHE D'ANIMATIONS — ourson en peluche & ballons
+   Ajout pur : ce fichier ne modifie AUCUN style existant.
+   Toutes les règles sont préfixées « fx- » et vivent dans .fx-layer.
+   ========================================================================== */
+
+/* ----------------------------------------
+   Couche flottante (au-dessus du contenu, ne capte aucun clic)
+   ---------------------------------------- */
+
+.fx-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    overflow: hidden;
+    pointer-events: none;
+    user-select: none;
+    contain: layout style;
+}
+
+/* Couche de l'intro : au-dessus de l'enveloppe mais sous le choix de langue */
+.fx-layer--intro {
+    z-index: 850;
+    opacity: 0;
+    transition: opacity 0.9s ease;
+}
+
+.fx-layer--intro.fx-live { opacity: 1; }
+
+/* Couche de la page : sous les cartes de contenu (z-index géré dans le CSS
+   d'origine = auto), donc les ballons passent au-dessus du fond mais restent
+   légers et translucides. */
+.fx-layer--page {
+    z-index: 54;
+    opacity: 0;
+    transition: opacity 1.4s ease;
+}
+
+.fx-layer--page.fx-live { opacity: 1; }
+
+.fx-layer.fx-passive * { animation-play-state: paused !important; }
+
+/* ----------------------------------------
+   BALLONS QUI MONTENT
+   ---------------------------------------- */
+
+.fx-balloon {
+    position: absolute;
+    bottom: -160px;
+    left: var(--fx-x, 50%);
+    width: var(--fx-size, 44px);
+    opacity: 0;
+    animation: fx-rise var(--fx-dur, 26s) linear var(--fx-delay, 0s) infinite;
+    will-change: transform, opacity;
+}
+
+.fx-balloon__sway {
+    display: block;
+    animation: fx-sway calc(var(--fx-dur, 26s) / 3.4) ease-in-out infinite alternate;
+    transform-origin: 50% 90%;
+}
+
+.fx-balloon svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 6px 12px rgba(31, 58, 83, 0.14));
+}
+
+@keyframes fx-rise {
+    0%   { transform: translate3d(0, 0, 0);        opacity: 0; }
+    6%   { opacity: var(--fx-opacity, 0.8); }
+    88%  { opacity: var(--fx-opacity, 0.8); }
+    100% { transform: translate3d(0, -125vh, 0);   opacity: 0; }
+}
+
+@keyframes fx-sway {
+    from { transform: translateX(-11px) rotate(-4deg); }
+    to   { transform: translateX(11px)  rotate(4deg); }
+}
+
+/* ----------------------------------------
+   OURSON PORTÉ PAR SES BALLONS (traversée de l'écran)
+   ---------------------------------------- */
+
+.fx-ride {
+    position: absolute;
+    top: var(--fx-y, 16%);
+    left: 0;
+    width: var(--fx-ride-size, 116px);
+    opacity: 0;
+    animation: fx-cross var(--fx-cross-dur, 52s) linear var(--fx-cross-delay, 3s) infinite;
+    will-change: transform, opacity;
+}
+
+.fx-ride__bob {
+    display: block;
+    animation: fx-bob 6.5s ease-in-out infinite;
+}
+
+.fx-ride svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 12px 18px rgba(31, 58, 83, 0.16));
+}
+
+@keyframes fx-cross {
+    0%   { transform: translate3d(-38vw, 0, 0); opacity: 0; }
+    6%   { opacity: 1; }
+    94%  { opacity: 1; }
+    100% { transform: translate3d(112vw, 0, 0); opacity: 0; }
+}
+
+@keyframes fx-bob {
+    0%, 100% { transform: translateY(-7px) rotate(-1.6deg); }
+    50%      { transform: translateY(7px)  rotate(1.6deg); }
+}
+
+/* ----------------------------------------
+   OURSON EN PELUCHE (coin bas de page)
+   ---------------------------------------- */
+
+.fx-teddy {
+    position: absolute;
+    bottom: -6px;
+    left: var(--fx-teddy-x, 14px);
+    width: var(--fx-teddy-size, 104px);
+    transform-origin: 50% 100%;
+    animation: fx-teddy-hi 9s ease-in-out infinite;
+    filter: drop-shadow(0 10px 16px rgba(31, 58, 83, 0.18));
+}
+
+.fx-teddy svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+@keyframes fx-teddy-hi {
+    0%, 100% { transform: translateY(0)       rotate(0deg); }
+    45%      { transform: translateY(-5px)    rotate(-1.2deg); }
+    70%      { transform: translateY(-2px)    rotate(1deg); }
+}
+
+/* Respiration de la peluche */
+.fx-teddy__breathe {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: fx-breathe 4.4s ease-in-out infinite;
+}
+
+@keyframes fx-breathe {
+    0%, 100% { transform: scale(1, 1); }
+    50%      { transform: scale(1.015, 1.03); }
+}
+
+/* Clignement des yeux */
+.fx-teddy__eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: fx-blink 6.4s ease-in-out infinite;
+}
+
+@keyframes fx-blink {
+    0%, 88%, 100% { transform: scaleY(1); }
+    90%, 93%      { transform: scaleY(0.08); }
+    96%           { transform: scaleY(1); }
+}
+
+/* Salut de la patte */
+.fx-teddy__arm {
+    transform-box: fill-box;
+    transform-origin: 50% 8%;
+    animation: fx-wave 6.4s ease-in-out infinite;
+}
+
+@keyframes fx-wave {
+    0%, 52%, 100% { transform: rotate(0deg); }
+    60%           { transform: rotate(-30deg); }
+    68%           { transform: rotate(-8deg); }
+    76%           { transform: rotate(-26deg); }
+    84%           { transform: rotate(0deg); }
+}
+
+/* Petits ballons tenus par l'ourson du coin */
+.fx-teddy__balloons {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: fx-balloons-bob 5.2s ease-in-out infinite;
+}
+
+@keyframes fx-balloons-bob {
+    0%, 100% { transform: rotate(-3deg) translateY(0); }
+    50%      { transform: rotate(3deg)  translateY(-4px); }
+}
+
+/* ----------------------------------------
+   ACCESSIBILITÉ — mouvement réduit
+   ---------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .fx-layer {
+        opacity: 1 !important;
+    }
+
+    .fx-balloon,
+    .fx-ride {
+        display: none;
+    }
+
+    .fx-teddy,
+    .fx-teddy__breathe,
+    .fx-teddy__eyes,
+    .fx-teddy__arm,
+    .fx-teddy__balloons {
+        animation: none !important;
+    }
+}
+
+/* ----------------------------------------
+   RESPONSIVE — on garde de l'air sur mobile
+   ---------------------------------------- */
+
+@media (max-width: 640px) {
+    .fx-teddy {
+        width: 82px;
+        left: 10px;
+    }
+
+    .fx-ride {
+        width: 84px;
+    }
+}
