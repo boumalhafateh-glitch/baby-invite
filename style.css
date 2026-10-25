@@ -1239,3 +1239,163 @@ body.lang-ar .envelope3d { transform-origin: center; }
     .animate-fade-in-late,
     .animate-scale-in { opacity: 1; }
 }
+
+/* ========================================
+   14. ENVELOPPE — DENTELLE BLEUE
+   Reprise fidèle du modèle fourni : poche carrée en dentelle,
+   bord supérieur en V festonné, couronne en éventail derrière la
+   carte, volants en cascade sur les côtés. Recolorée en bleu.
+   ======================================== */
+
+/* Format carré, comme le modèle (14 × 14 cm) */
+.envelope3d {
+    width: clamp(280px, 88vw, 430px);
+    aspect-ratio: 440 / 470;
+}
+
+.env-body {
+    filter:
+        drop-shadow(0 2px 3px rgba(43, 87, 122, 0.10))
+        drop-shadow(0 18px 30px rgba(43, 87, 122, 0.16))
+        drop-shadow(0 44px 70px rgba(43, 87, 122, 0.18));
+}
+
+/* — Couronne de dentelle en éventail — */
+.env-lace-fan {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-image: url("img/lace-fan.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    animation: laceFanBreathe 9s ease-in-out infinite;
+    transform-origin: 50% 78%;
+}
+
+@keyframes laceFanBreathe {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50%      { transform: scale(1.012) rotate(0.25deg); }
+}
+
+/* — La carte (lettre) — */
+.env-card {
+    position: absolute;
+    left: 22.73%;
+    right: 22.73%;
+    top: 15.74%;
+    height: 59.15%;
+    z-index: 2;
+    border-radius: 0;
+    background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.022'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E"),
+        linear-gradient(175deg, #ffffff 0%, #f4fafe 100%);
+    box-shadow:
+        0 0 0 1px rgba(190, 214, 232, 0.85),
+        0 5px 14px rgba(43, 87, 122, 0.14);
+    transition: transform 1.5s cubic-bezier(0.22, 0.9, 0.28, 1) 0.9s;
+    will-change: transform;
+}
+
+.envelope3d.open .env-card {
+    transform: translateY(-46%);
+}
+
+/* Filet intérieur de la carte */
+.env-card-frame {
+    position: absolute;
+    inset: 3.2%;
+    border: 1px solid rgba(203, 222, 238, 0.95);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    padding: 0.4rem;
+    text-align: center;
+}
+
+.env-card-frame::before {
+    content: none;
+}
+
+/* Ligne en script, en haut de la carte */
+.env-card-script {
+    font-family: var(--font-script);
+    font-size: clamp(1.15rem, 5.2vw, 1.75rem);
+    line-height: 1.2;
+    color: var(--blue-600);
+}
+
+/* Le prénom, en grandes capitales sérif espacées */
+.env-card-name {
+    font-family: var(--font-serif);
+    font-size: clamp(0.86rem, 3.5vw, 1.22rem);
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.26em;
+    text-indent: 0.26em;
+    text-transform: uppercase;
+    color: var(--blue-800);
+}
+
+/* — La poche en dentelle — */
+.env-front {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    border-radius: 0;
+    background-color: transparent;
+    background-image: url("img/lace-pocket.svg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: none;
+    overflow: visible;
+}
+
+/* La poche bouge à peine : la dentelle « respire » */
+.env-front::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* Anciens éléments du rabat / nœud : neutralisés */
+.env-back,
+.env-flap,
+.env-seal,
+.env-side,
+.env-bottom,
+.env-card-sprig,
+.env-card-rule,
+.env-card-sub {
+    display: none;
+}
+
+/* Le prénom en arabe garde sa typographie propre */
+body.lang-ar .env-card-name {
+    font-family: var(--font-ar);
+    font-size: clamp(1.05rem, 4.4vw, 1.5rem);
+    letter-spacing: 0;
+    text-indent: 0;
+    text-transform: none;
+    line-height: 1.7;
+}
+
+body.lang-ar .env-card-script {
+    font-family: var(--font-ar);
+    font-size: clamp(1rem, 4vw, 1.3rem);
+}
+
+/* Respect du mouvement réduit */
+@media (prefers-reduced-motion: reduce) {
+    .env-lace-fan { animation: none; }
+    .env-card { transition-duration: 0.001ms; }
+}
+
+/* Petits écrans : on resserre */
+@media (max-width: 420px) {
+    .envelope3d { width: 90vw; }
+    .env-card-name { letter-spacing: 0.2em; text-indent: 0.2em; }
+}
