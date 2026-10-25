@@ -9,6 +9,7 @@
 
 const I18N = {
   seal:            { fr: 'Ouvrir',            en: 'Open',            ar: 'افتح' },
+  cardSub:         { fr: 'Invitation',        en: 'Invitation',      ar: 'دعوة' },
   heroIntro:       { fr: 'Nous avons la joie de vous annoncer', en: 'We are delighted to announce', ar: 'بقلوب يملؤها الفرح، نشارككم أجمل خبر، فقد أشرقت حياتنا بقدوم مولودنا الغالي، وازدادت أيامنا جمالاً بقدوم أميرنا الصغير.' },
   storyTitle:      { fr: 'Notre Bonheur',     en: 'Our Joy',         ar: 'فرحتنا' },
   storyP1:         { fr: 'Après qu\'Allah nous a comblés de bienfaits en nous accordant برتيل, voici qu\'aujourd\'hui Il nous honore à nouveau et ajoute joie sur joie, en nous annonçant la venue de son frère adoré ريان يحيى', en: 'After Allah blessed us with برتيل, today He honors us once again and adds joy upon joy, announcing the arrival of her dear brother ريان يحيى', ar: 'بعدما أكرمنا الله ورزقنا برتيل، ها هو اليوم يكرمنا من جديد ويزيد فرحتنا فرحًا، ويبشرنا بقدوم أخيها الغالي ريان يحيى' },
@@ -160,25 +161,54 @@ const envelope = document.getElementById('envelope');
 const intro    = document.getElementById('intro');
 
 if (envelope) {
-    envelope.addEventListener('click', () => {
+    let isOpen = false;
+
+    const openEnvelope = () => {
+        if (isOpen) return;
+        isOpen = true;
         envelope.style.pointerEvents = 'none';
-
         envelope.classList.add('open');
+        envelope.style.transform = '';
 
-        // La page du verset est révélée dès que le rabat est ouvert (1.4s)
+        // Chronologie : cachet (0.6s) → rabat (1.25s) → la carte s'élève (1.15s)
         setTimeout(() => {
             window.scrollTo(0, 0);
-            intro.style.transition = 'opacity 0.9s ease';
+            intro.style.transition = 'opacity 1s ease';
             intro.style.opacity = '0';
 
             setTimeout(() => {
                 intro.style.display = 'none';
                 document.documentElement.style.overflow = 'auto';
                 document.body.style.overflow = 'auto';
-            }, 900);
+            }, 1000);
 
-        }, 1500);
+        }, 2750);
+    };
+
+    envelope.addEventListener('click', openEnvelope);
+
+    // Accessibilité clavier : Entrée ou Espace ouvre l'enveloppe
+    envelope.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+            e.preventDefault();
+            openEnvelope();
+        }
     });
+
+    // Inclinaison 3D subtile au pointeur (desktop uniquement)
+    if (window.matchMedia('(pointer: fine)').matches && intro) {
+        const scene = envelope.closest('.envelope-scene');
+        intro.addEventListener('pointermove', (e) => {
+            if (isOpen || !scene) return;
+            const r = scene.getBoundingClientRect();
+            const dx = (e.clientX - r.left) / r.width  - 0.5;
+            const dy = (e.clientY - r.top)  / r.height - 0.5;
+            envelope.style.transform = `rotateY(${(dx * 9).toFixed(2)}deg) rotateX(${(-dy * 7).toFixed(2)}deg)`;
+        });
+        intro.addEventListener('pointerleave', () => {
+            if (!isOpen) envelope.style.transform = '';
+        });
+    }
 }
 
 
