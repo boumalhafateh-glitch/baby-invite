@@ -44,9 +44,9 @@ const I18N = {
         ar: 'سبوعه وختانه'
     },
     dateShort: {
-        fr: 'À confirmer',
-        en: 'To be confirmed',
-        ar: 'يُحدَّد لاحقًا'
+        fr: 'Samedi 28 novembre 2026',
+        en: 'Saturday, November 28, 2026',
+        ar: 'السبت ٢٨ نوفمبر ٢٠٢٦'
     },
     placeShort: {
         fr: 'Joinville',
@@ -94,9 +94,9 @@ const I18N = {
         ar: 'التاريخ'
     },
     evValueDate: {
-        fr: 'À confirmer',
-        en: 'To be confirmed',
-        ar: 'يُحدَّد لاحقًا'
+        fr: 'Samedi 28 novembre 2026',
+        en: 'Saturday, November 28, 2026',
+        ar: 'السبت ٢٨ نوفمبر ٢٠٢٦'
     },
     evLabelTime: {
         fr: 'HEURE',
@@ -104,9 +104,9 @@ const I18N = {
         ar: 'الوقت'
     },
     evValueTime: {
-        fr: 'À confirmer',
-        en: 'To be confirmed',
-        ar: 'يُحدَّد لاحقًا'
+        fr: 'Après-midi',
+        en: 'Afternoon',
+        ar: 'بعد الظهر'
     },
     evLabelPlace: {
         fr: 'LIEU',
