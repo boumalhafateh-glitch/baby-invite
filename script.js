@@ -36,7 +36,7 @@ const I18N = {
     verseRef: {
         fr: 'Coran — Sourate Maryam, v. 7',
         en: 'Quran — Surah Maryam, 7',
-        ar: 'سورة مريم · الآية ٧'
+        ar: 'سورة مريم · الآية 7'
     },
     announceLine: {
         fr: "Son sbu' et sa circoncision",
@@ -46,7 +46,7 @@ const I18N = {
     dateShort: {
         fr: 'Samedi 28 novembre 2026',
         en: 'Saturday, November 28, 2026',
-        ar: 'السبت ٢٨ نوفمبر ٢٠٢٦'
+        ar: 'السبت 28 نوفمبر 2026'
     },
     placeShort: {
         fr: 'Joinville',
@@ -96,7 +96,7 @@ const I18N = {
     evValueDate: {
         fr: 'Samedi 28 novembre 2026',
         en: 'Saturday, November 28, 2026',
-        ar: 'السبت ٢٨ نوفمبر ٢٠٢٦'
+        ar: 'السبت 28 نوفمبر 2026'
     },
     evLabelTime: {
         fr: 'HEURE',

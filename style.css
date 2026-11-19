@@ -1171,9 +1171,20 @@ body.lang-ar .lt-fr { display: none; }
 
 .footer-name {
     margin-top: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
     font-family: var(--font-serif);
     font-size: 1.45rem;
     color: var(--blue-800);
+}
+
+.footer-heart {
+    color: var(--blue-400);
+    font-family: var(--font-sans);
+    font-size: 0.7rem;
+    line-height: 1;
 }
 
 /* ========================================
