@@ -41,8 +41,6 @@
     --scallop: 15px;
     --shadow-soft: 0 26px 60px -34px rgba(31, 58, 83, 0.42), 0 2px 6px rgba(31, 58, 83, 0.06);
     --shadow-card: 0 14px 34px -22px rgba(31, 58, 83, 0.45);
-    --gingham: repeating-linear-gradient(0deg, rgba(123, 167, 203, 0.26) 0 14px, transparent 14px 28px),
-               repeating-linear-gradient(90deg, rgba(123, 167, 203, 0.26) 0 14px, transparent 14px 28px);
 }
 
 * {
@@ -150,7 +148,6 @@ svg { display: block; }
 .gingham-band {
     height: 18px;
     background-color: #e8f2fa;
-    background-image: var(--gingham);
     border-top: 1px solid rgba(123, 167, 203, 0.35);
     border-bottom: 1px solid rgba(123, 167, 203, 0.35);
 }
@@ -242,8 +239,7 @@ svg { display: block; }
     align-items: center;
     justify-content: center;
     padding: 1.5rem;
-    background-color: #e9f3fa;
-    background-image: var(--gingham);
+    background: #e9f3fa;
 }
 
 .lang-card {
